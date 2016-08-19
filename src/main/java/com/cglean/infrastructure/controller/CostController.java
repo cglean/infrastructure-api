@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cglean.infrastructure.domain.Cost;
+import com.cglean.infrastructure.domain.TimeInterval;
 import com.cglean.infrastructure.service.InfrastructureService;
 
 @RestController
 public class CostController {
 
 	final String dateFormat = "yyyy-MM-dd";
-	
+
 	@Autowired
 	InfrastructureService service;
 
@@ -33,6 +34,9 @@ public class CostController {
 			start = end.minusMonths(1);
 		}
 
-		return service.getCost(start, end);
+		TimeInterval interval = new TimeInterval();
+		interval.setStart(start);
+		interval.setEnd(end);
+		return service.findCostForPeriod(interval);
 	}
 }

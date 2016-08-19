@@ -9,6 +9,8 @@ public class Cost {
 	LocalDate start;
 	LocalDate end;
 	String total;
+	String application;
+	String platform;
 	String cpu;
 	String memory;
 	String disk;

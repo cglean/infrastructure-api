@@ -1,4 +1,4 @@
-package com.cglean.infrastructure;
+package com.cglean.infrastructure.repository;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -14,13 +14,14 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.cglean.infrastructure.InfrastructureApiApplication;
 import com.cglean.infrastructure.domain.DailyCost;
 import com.cglean.infrastructure.repository.DailyCostRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = InfrastructureApiApplication.class)
 @TestPropertySource(properties = "spring.jpa.showSql=true")
-public class DailyCostTests {
+public class DailyCostRepositoryTests {
 
 	@Autowired
 	private DailyCostRepository repository;
@@ -37,7 +38,7 @@ public class DailyCostTests {
 
 		DailyCost second = new DailyCost();
 		second.setCost(BigDecimal.ONE);
-		second.setCostDate(LocalDate.now());
+		second.setCostDate(LocalDate.now().minusDays(1));
 		repository.save(second);
 
 		List<DailyCost> costs = repository.findAll();
