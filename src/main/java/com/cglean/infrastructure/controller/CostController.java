@@ -16,7 +16,7 @@ import com.cglean.infrastructure.service.InfrastructureService;
 public class CostController {
 
 	final String dateFormat = "yyyy-MM-dd";
-
+	
 	@Autowired
 	InfrastructureService service;
 
