@@ -5,13 +5,14 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.util.AopTestUtils;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import com.cglean.infrastructure.InfrastructureApiApplication;
 import com.cglean.infrastructure.domain.TimeInterval;
@@ -24,13 +25,18 @@ public class CostControllerTests {
 	@Mock
 	private InfrastructureService service;
 
-	@InjectMocks
+	//@InjectMocks
 	@Autowired
 	private CostController controller;
 
 	@Before
 	public void setup() {
-		MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.initMocks(this);		
+		
+		// We have to do this hoop because the Controller is marked @RefreshScope
+		// Fixed in Spring Boot 1.4 
+		Object actualTarget = AopTestUtils.getUltimateTargetObject(controller);
+		ReflectionTestUtils.setField(actualTarget, "service", service);
 	}
 
 	@Test

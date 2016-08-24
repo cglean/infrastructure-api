@@ -8,5 +8,6 @@ applications:
   path: target/infrastructure-api-0.0.1-SNAPSHOT.jar
   services:
     - service-registry
+    - config-server
   env:
     SPRING_PROFILES_ACTIVE: cloud

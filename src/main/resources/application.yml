@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: infrastructure-api
   cloud:
     services:
       registrationMethod: route
