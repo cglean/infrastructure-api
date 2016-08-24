@@ -14,9 +14,10 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Brixton.SR4</version>
+		<version>Brixton.SR5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 
 	<dependencyManagement>
 		<dependencies>

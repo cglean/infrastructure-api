@@ -2,6 +2,7 @@ package com.cglean.infrastructure.service;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.cglean.Constants;
 import com.cglean.infrastructure.dao.CostDAO;
 import com.cglean.infrastructure.domain.Cost;
 import com.cglean.infrastructure.domain.DailyCost;
@@ -57,7 +59,7 @@ public class InfrastructureServiceImpl implements InfrastructureService {
 					daoInterval.setStart(last.getCostDate());
 				}
 			}
-			
+
 			List<DailyCost> oldest = repository.findTop1ByOrderByCostDateAsc();
 			if (!oldest.isEmpty()) {
 				DailyCost old = oldest.get(0);
@@ -72,8 +74,9 @@ public class InfrastructureServiceImpl implements InfrastructureService {
 		}
 
 		Cost costForPeriod = new Cost();
-		costForPeriod.setStart(interval.getStart());
-		costForPeriod.setEnd(interval.getEnd());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.dateFormat);
+		costForPeriod.setStartDate(interval.getStart().format(formatter));
+		costForPeriod.setEndDate(interval.getEnd().format(formatter));
 
 		List<DailyCost> costs = repository.findAll(dateWindow);
 		if (!costs.isEmpty()) {

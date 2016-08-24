@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cglean.infrastructure.InfrastructureApiApplication;
 import com.cglean.infrastructure.domain.DailyCost;
-import com.cglean.infrastructure.repository.DailyCostRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = InfrastructureApiApplication.class)

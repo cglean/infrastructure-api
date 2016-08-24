@@ -1,5 +1,7 @@
 package com.cglean.infrastructure.controller;
 
+import static com.cglean.Constants.dateFormat;
+
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,6 @@ import com.cglean.infrastructure.service.InfrastructureService;
 @RestController
 public class CostController {
 
-	final String dateFormat = "yyyy-MM-dd";
-	
 	@Autowired
 	InfrastructureService service;
 

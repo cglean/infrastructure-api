@@ -50,9 +50,9 @@ public class InfrastructureServiceTests {
 	@Autowired
 	DailyCostRepository repository;
 
-	//@Test
+	// @Test
 	public void findCostProgressingForward() {
-		
+
 		LocalDate yesterday = LocalDate.now().minusDays(1);
 		LocalDate today = LocalDate.now();
 		LocalDate tomorrow = LocalDate.now().plusDays(1);

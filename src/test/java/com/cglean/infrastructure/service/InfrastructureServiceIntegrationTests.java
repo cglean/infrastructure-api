@@ -28,7 +28,7 @@ public class InfrastructureServiceIntegrationTests {
 	@Autowired
 	InfrastructureService service;
 
-	//@Test
+	// @Test
 	public void findCostsForLastMonth() {
 
 		DailyCost first = new DailyCost();
