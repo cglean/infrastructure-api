@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: infrastructure-api            
-  cloud:
-    config:
-      uri: http://localhost:8001

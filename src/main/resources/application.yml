@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: infrastructure-api
+  cloud:
+    services:
+      registrationMethod: route
+      
+server:
+  port: ${PORT:${SERVER_PORT:0}}   # Select any available port if neither port nor server port are specified.
+  
+# Using macros that are replaced by maven build
+info:
+  build:
+    artifact: '@project.artifactId@'
+    name: '@project.name@'
+    description: '@project.description@'
+    version: '@project.version@'  
+  

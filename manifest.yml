@@ -3,10 +3,10 @@
 applications:
 - name: infrastructure-api
   host: infrastructure-api
-  memory: 512MB
+  memory: 768MB
   instances: 1
   path: target/infrastructure-api-0.0.1-SNAPSHOT.jar
-#  buildpack: java_buildpack
-  services: []
+  services:
+    - service-registry
   env:
     SPRING_PROFILES_ACTIVE: cloud
